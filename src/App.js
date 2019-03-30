@@ -43,7 +43,7 @@ class App extends Component {
 
         const curUrl = window.location.href;
         if (curUrl.indexOf('access_token') > -1) {
-            const shorten = curUrl.replace('http://localhost:3000/#/', 'http://localhost:3000/#');
+            const shorten = curUrl.replace(params.RedirectUriSignIn+'/#/', params.RedirectUriSignIn+'/#');
             cognitoAuthClient.parseCognitoWebResponse(shorten);
         }
     }
