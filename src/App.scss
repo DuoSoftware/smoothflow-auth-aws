@@ -1,0 +1,87 @@
+@import "./_CORE_/styles/definitions";
+@import '../node_modules/react-redux-toastr/src/styles/index';
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 14px;
+}
+
+.sf-auth {
+    background: url("assets/images/smoothflow_home_background_image_02a.svg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.sf-row {
+  display: flex;
+  align-items: center;
+}
+
+.sf-auth-header {
+  text-align: center;
+  display: block;
+  padding: ($sf-spacing-inner-primary * 3) 0;
+}
+
+.sf-auth-footer {
+  padding: $sf-spacing-inner-primary;
+  text-align: center;
+}
+
+.sf-errors-inblock {
+  text-align: center;
+  padding: 15px;
+  color: red;
+}
+
+.sf-federated-auth {
+  margin-top: $sf-spacing-inner-primary;
+  padding-top: $sf-spacing-inner-primary;
+  border-top: solid 1px $sf-color-shadow-primary;
+  .sf-button-facebook {
+    margin-bottom: $sf-spacing-inner-primary;
+  }
+}
+
+.sf-input-icon {
+  position: relative;
+  input {
+    padding-right: $sf-spacing-inner-primary*3;
+  }
+  i.material-icons {
+    position: absolute;
+    right: 10px;
+    height: 24px;
+    width: 24px;
+    color: #888;
+    cursor: pointer;
+    top: 10px;
+  }
+}
+
+.sf-row {
+  width: 100%;
+  .sf-auth-input {
+    flex: 1;
+  }
+}
+.sf-button {
+  &.sf-button-block {
+    display: block;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.sf-auth-input {
+  margin-bottom: $sf-spacing-inner-primary;
+}

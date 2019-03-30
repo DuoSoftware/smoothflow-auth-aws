@@ -1,0 +1,10 @@
+@import "../../../_CORE_/styles/definitions";
+
+.sf-card {
+  border-radius: $sf-border-radius-primary;
+  padding: $sf-spacing-inner-primary;
+  background: #ffffff;
+  -webkit-box-shadow: 0 1px $sf-shadow-size-primary $sf-color-shadow-primary;
+  -moz-box-shadow: 0 1px $sf-shadow-size-primary $sf-color-shadow-primary;
+  box-shadow: 0 1px $sf-shadow-size-primary $sf-color-shadow-primary;
+}
