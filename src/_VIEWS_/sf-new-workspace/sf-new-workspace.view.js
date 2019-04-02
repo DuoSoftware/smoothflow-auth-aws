@@ -108,7 +108,7 @@ class WorkspaceView extends Component {
         const u = window.location.href;
         const f = '?r=';
         this.setState(s => ({...s, loading: true}));
-        
+
         localStorage.setItem('scopes', workspace);
         if (u.indexOf(f) !== -1) {
             window.location.replace(u.split(f)[1]);
