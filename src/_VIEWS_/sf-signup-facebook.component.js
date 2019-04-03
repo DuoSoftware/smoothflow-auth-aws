@@ -59,7 +59,7 @@ class SignInWithFacebook extends Component {
     // }
 
     signIn() {
-        window.location = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=http://localhost:3000&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Facebook';
+        window.location = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=http://https://dev.smoothflow.io/account&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Facebook';
     }
 
     getAWSCredentials(response) {
