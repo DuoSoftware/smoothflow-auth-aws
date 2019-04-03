@@ -20,8 +20,8 @@ class App extends Component {
             UserPoolId: awsweb.Auth.userPoolId,
             AppWebDomain: awsweb.Auth.appWebDomain,
             TokenScopesArray: ['email', 'openid'],
-            RedirectUriSignIn: 'http://dev.smoothflow.io/account',
-            RedirectUriSignOut: 'http://dev.smoothflow.io/account',
+            RedirectUriSignIn: 'https://dev.smoothflow.io/account',
+            RedirectUriSignOut: 'https://dev.smoothflow.io/account',
             ResponseType: 'code',
             IdentityProvider : 'Google'
         };
