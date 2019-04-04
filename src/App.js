@@ -11,10 +11,13 @@ import ReduxToastr from 'react-redux-toastr'
 import awsweb from "./config/aws-amplify-config";
 import {CognitoAuth} from "amazon-cognito-auth-js";
 import {Auth, Hub} from "aws-amplify/lib/index";
+import axios from "axios/index";
+import {User} from "./_CORE_/actions";
 
 class App extends Component {
     componentDidMount() {
         // if (!window.FB) this.createScript();
+        const _self = this;
         const params = {
             ClientId: awsweb.Auth.userPoolWebClientId,
             UserPoolId: awsweb.Auth.userPoolId,
@@ -53,7 +56,11 @@ class App extends Component {
             // user signed in
             onSuccess: (result) => {
                 Auth.currentSession().then((session) => {
-                    console.log(`Google user: ${session}`)
+                    axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
+                    axios.defaults.headers.common['companyInfo'] = '5:1';
+                    _self.props.dispatch(User(session.idToken));
+                    _self.setState(s => ({...s, loading: false}));
+                    _self.props.history.push('/workspaces');
                 })
                 .catch((err) => {
                     debugger
