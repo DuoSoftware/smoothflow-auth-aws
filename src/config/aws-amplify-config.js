@@ -1,3 +1,26 @@
+const oauth = {
+    // Domain name
+    domain : 'smoothflow-dev.auth.us-east-1.amazoncognito.com', 
+
+    // Authorized scopes
+    scope : ['email', 'profile', 'openid'], 
+
+    // Callback URL
+    redirectSignIn : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+
+    // Sign out URL
+    redirectSignOut : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+
+    // 'code' for Authorization code grant, 
+    // 'token' for Implicit grant
+    responseType: 'code',
+
+    // optional, for Cognito hosted ui specified options
+    options: {
+        // Indicates if the data collection is enabled to support Cognito advanced security features. By default, this flag is set to true.
+        AdvancedSecurityDataCollectionFlag : true
+    }
+};
 const awsweb = {
     Auth: {
 
@@ -6,8 +29,6 @@ const awsweb = {
 
         // REQUIRED - Amazon Cognito Region
         region: 'us-east-1',
-
-        scope : ['email', 'profile', 'openid','aws.cognito.signin.user.admin'],
 
         // OPTIONAL - Amazon Cognito Federated Identity Pool Region
         // Required only if it's different from Amazon Cognito Region
@@ -42,7 +63,8 @@ const awsweb = {
         // storage: new MyStorage(),
 
         // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
-        authenticationFlowType: 'USER_PASSWORD_AUTH'
+        authenticationFlowType: 'USER_PASSWORD_AUTH',
+        oauth: oauth
     }
 };
 
