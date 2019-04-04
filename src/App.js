@@ -53,7 +53,7 @@ class App extends Component {
             // user signed in
             onSuccess: (result) => {
                 Auth.currentSession().then((session) => {
-                    debugger
+                    console.log(`Google user: ${session}`)
                 })
                 .catch((err) => {
                     debugger
