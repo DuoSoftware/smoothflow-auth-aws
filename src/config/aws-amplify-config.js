@@ -7,6 +7,8 @@ const awsweb = {
         // REQUIRED - Amazon Cognito Region
         region: 'us-east-1',
 
+        scope : ['email', 'profile', 'openid','aws.cognito.signin.user.admin'],
+
         // OPTIONAL - Amazon Cognito Federated Identity Pool Region
         // Required only if it's different from Amazon Cognito Region
         identityPoolRegion: 'us-east-1',
