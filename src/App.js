@@ -21,9 +21,9 @@ class App extends Component {
             AppWebDomain: awsweb.Auth.appWebDomain,
             TokenScopesArray: ['email', 'openid'],
             RedirectUriSignIn: 'https://dev.smoothflow.io/account',
-            RedirectUriSignOut: 'https://dev.smoothflow.io/account',
-            ResponseType: 'code',
-            IdentityProvider : 'Google'
+            RedirectUriSignOut: 'https://dev.smoothflow.io/account'
+            // ResponseType: 'code',
+            // IdentityProvider : 'Google'
         };
         const cognitoAuthClient = new CognitoAuth(params);
         cognitoAuthClient.userhandler = {
