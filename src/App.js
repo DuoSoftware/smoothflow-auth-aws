@@ -76,8 +76,8 @@ class App extends Component {
         }
     }
     forwardFederatedUser(session) {
-        axios['defaults']['headers']['common']['Authorization'] = 'bearer ' + session.idToken.jwtToken;
-        axios['defaults']['headers']['common']['companyInfo'] = '5:1';
+        axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
+        axios.defaults.headers.common['companyInfo'] = '5:1';
         this.props.dispatch(User(session.idToken));
         this.props.history.push('/workspaces');
     }
