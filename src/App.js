@@ -19,7 +19,7 @@ class App extends Component {
             ClientId: awsweb.Auth.userPoolWebClientId,
             UserPoolId: awsweb.Auth.userPoolId,
             AppWebDomain: awsweb.Auth.appWebDomain,
-            TokenScopesArray: ['email', 'openid', 'profile'],
+            TokenScopesArray: ['email', 'openid', 'profile', 'aws.cognito.signin.user.admin'],
             // RedirectUriSignIn: 'https://dev.smoothflow.io/account',
             RedirectUriSignIn: 'https://dev.smoothflow.io/account',
             RedirectUriSignOut: 'https://dev.smoothflow.io/account'
