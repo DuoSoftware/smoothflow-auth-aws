@@ -56,8 +56,8 @@ class App extends Component {
             // user signed in
             onSuccess: (result) => {
                 Auth.currentSession().then((session) => {
-                    axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
-                    axios.defaults.headers.common['companyInfo'] = '5:1';
+                    axios.defaults.headers['common']['Authorization'] = 'bearer ' + session.idToken.jwtToken;
+                    axios.defaults.headers['common']['companyInfo'] = '5:1';
                     _self.props.dispatch(User(session.idToken));
                     _self.setState(s => ({...s, loading: false}));
                     _self.props.history.push('/workspaces');
