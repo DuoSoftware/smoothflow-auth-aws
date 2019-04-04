@@ -25,9 +25,10 @@ class App extends Component {
             UserPoolId: awsweb.Auth.userPoolId,
             AppWebDomain: awsweb.Auth.appWebDomain,
             TokenScopesArray: ['email', 'openid', 'profile', 'aws.cognito.signin.user.admin'],
-            // RedirectUriSignIn: 'https://dev.smoothflow.io/account',
             RedirectUriSignIn: 'https://dev.smoothflow.io/account',
+            // RedirectUriSignIn: 'http://localhost',
             RedirectUriSignOut: 'https://dev.smoothflow.io/account'
+            // RedirectUriSignOut: 'http://localhost'
             // ResponseType: 'code',
             // IdentityProvider : 'Google'
         };
@@ -77,9 +78,9 @@ class App extends Component {
     }
     forwardFederatedUser(session) {
         const h = axios.defaults.headers;
-        const toh = typeof h;
-        axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
-        axios.defaults.headers.common['companyInfo'] = '5:1';
+        const toh = JSON.stringify(h);
+        h.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
+        h.common['companyInfo'] = '5:1';
         this.props.dispatch(User(session.idToken));
         this.props.history.push('/workspaces');
     }
