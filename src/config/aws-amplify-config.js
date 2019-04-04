@@ -6,10 +6,12 @@ const oauth = {
     scope : ['email', 'profile', 'openid'], 
 
     // Callback URL
-    redirectSignIn : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+    // redirectSignIn : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+    redirectSignIn : 'https://localhost/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
 
     // Sign out URL
-    redirectSignOut : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+    // redirectSignOut : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+    redirectSignOut : 'https://localhost/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
 
     // 'code' for Authorization code grant, 
     // 'token' for Implicit grant
@@ -62,9 +64,10 @@ const awsweb = {
         // OPTIONAL - customized storage object
         // storage: new MyStorage(),
 
+        // oauth: oauth,
+
         // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
         authenticationFlowType: 'USER_PASSWORD_AUTH',
-        oauth: oauth
     }
 };
 

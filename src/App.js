@@ -10,7 +10,7 @@ import './App.scss';
 import ReduxToastr from 'react-redux-toastr'
 import awsweb from "./config/aws-amplify-config";
 import {CognitoAuth} from "amazon-cognito-auth-js";
-import {Auth} from "aws-amplify/lib/index";
+import {Auth, Hub} from "aws-amplify/lib/index";
 
 class App extends Component {
     componentDidMount() {
@@ -20,12 +20,35 @@ class App extends Component {
             UserPoolId: awsweb.Auth.userPoolId,
             AppWebDomain: awsweb.Auth.appWebDomain,
             TokenScopesArray: ['email', 'openid', 'profile'],
+            // RedirectUriSignIn: 'https://dev.smoothflow.io/account',
             RedirectUriSignIn: 'https://dev.smoothflow.io/account',
             RedirectUriSignOut: 'https://dev.smoothflow.io/account'
             // ResponseType: 'code',
             // IdentityProvider : 'Google'
         };
         const cognitoAuthClient = new CognitoAuth(params);
+
+        // const oauth = {
+        //     domain : 'smoothflow-dev.auth.us-east-1.amazoncognito.com',
+        //     scope: ['email', 'profile', 'openid'],
+        //     redirectSignIn: 'http://localhost/',
+        //     redirectSignOut: 'http://localhost/',
+        //     responseType: 'code' // or token
+        // };
+
+        // const oauth = {
+        //     domain : 'smoothflow-dev.auth.us-east-1.amazoncognito.com',
+        //     scope: ['email', 'profile', 'openid'],
+        //     redirectSignIn: 'https://dev.smoothflow.io/account/',
+        //     redirectSignOut: 'https://dev.smoothflow.io/account/',
+        //     responseType: 'code' // or token
+        // };
+
+        // Auth.configure({ oauth });
+        // Hub.listen('auth', (data) => {
+        //     debugger;
+        // });
+
         cognitoAuthClient.userhandler = {
             // user signed in
             onSuccess: (result) => {
