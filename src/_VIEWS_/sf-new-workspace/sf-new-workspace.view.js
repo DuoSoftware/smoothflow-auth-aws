@@ -4,6 +4,7 @@ import './sf-new-workspace.scss'
 import Wrap from "../../_COMPONENTS_/_common_/wrap/sf-wrap.component";
 import {Preloader} from "../../_COMPONENTS_/_common_/sf-preloader/sf-preloader.component";
 import {WorkspaceService} from "../../_CORE_/services";
+import axios from 'axios';
 
 class WorkspaceView extends Component {
     constructor(props) {
@@ -14,7 +15,9 @@ class WorkspaceView extends Component {
             newWorkspace: {
                 name: ''
             }
-        }
+        };
+        axios.defaults.headers.common['Authorization'] = 'bearer ' + this.props.user.user;
+        axios.defaults.headers.common.common['companyInfo'] = '5:1';
     }
 
     componentDidMount() {
