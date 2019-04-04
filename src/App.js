@@ -13,6 +13,8 @@ import {CognitoAuth} from "amazon-cognito-auth-js";
 import {Auth, Hub} from "aws-amplify/lib/index";
 import axios from "axios/index";
 import {User} from "./_CORE_/actions";
+import { createHashHistory } from 'history'
+import { connect } from 'react-redux'
 
 class App extends Component {
     componentDidMount() {
@@ -56,11 +58,7 @@ class App extends Component {
             // user signed in
             onSuccess: (result) => {
                 Auth.currentSession().then((session) => {
-                    axios.defaults.headers['common']['Authorization'] = 'bearer ' + session.idToken.jwtToken;
-                    axios.defaults.headers['common']['companyInfo'] = '5:1';
-                    _self.props.dispatch(User(session.idToken));
-                    _self.setState(s => ({...s, loading: false}));
-                    _self.props.history.push('/workspaces');
+                    _self.forwardFederatedUser(session);
                 })
                 .catch((err) => {
                     debugger
@@ -76,6 +74,12 @@ class App extends Component {
             const shorten = curUrl.replace(params.RedirectUriSignIn+'/#/', params.RedirectUriSignIn+'/#');
             cognitoAuthClient.parseCognitoWebResponse(shorten);
         }
+    }
+    forwardFederatedUser(session) {
+        axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
+        axios.defaults.headers.common['companyInfo'] = '5:1';
+        this.props.dispatch(User(session.idToken));
+        this.props.history.push('/workspaces');
     }
 
   render() {
@@ -116,4 +120,5 @@ class App extends Component {
   }
 }
 
-export default App;
+const history = createHashHistory();
+export default (connect())(App);
