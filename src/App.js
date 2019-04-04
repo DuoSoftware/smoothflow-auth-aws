@@ -11,7 +11,7 @@ import ReduxToastr from 'react-redux-toastr'
 import awsweb from "./config/aws-amplify-config";
 import {CognitoAuth} from "amazon-cognito-auth-js";
 import {Auth, Hub} from "aws-amplify/lib/index";
-import axios from "axios/index";
+import axios from "axios";
 import {User} from "./_CORE_/actions";
 import { createHashHistory } from 'history'
 import { connect } from 'react-redux'
