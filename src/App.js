@@ -73,7 +73,7 @@ class App extends Component {
         axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
         axios.defaults.headers.common['companyInfo'] = '5:1';
         this.props.dispatch(User(session.idToken));
-        this.props.history.push('/workspaces');
+        window.location.href = "https://dev.smoothflow.io/account/#/workspaces";
     }
 
   render() {
