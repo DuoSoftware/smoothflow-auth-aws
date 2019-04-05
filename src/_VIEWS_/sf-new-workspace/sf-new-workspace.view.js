@@ -16,8 +16,8 @@ class WorkspaceView extends Component {
                 name: ''
             }
         };
-        axios.defaults.headers.common['Authorization'] = 'bearer ' + this.props.user.user;
-        axios.defaults.headers.common.common['companyInfo'] = '5:1';
+        // axios.defaults.headers.common['Authorization'] = 'bearer ' + this.props.user.user;
+        // axios.defaults.headers.common['companyInfo'] = '5:1';
     }
 
     componentDidMount() {
