@@ -17,8 +17,10 @@ import { createHashHistory } from 'history'
 import { connect } from 'react-redux'
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+    };
     componentDidMount() {
-        // if (!window.FB) this.createScript();
         const _self = this;
         const params = {
             ClientId: awsweb.Auth.userPoolWebClientId,
@@ -26,21 +28,12 @@ class App extends Component {
             AppWebDomain: awsweb.Auth.appWebDomain,
             TokenScopesArray: ['email', 'openid', 'profile', 'aws.cognito.signin.user.admin'],
             RedirectUriSignIn: 'https://dev.smoothflow.io/account',
-            // RedirectUriSignIn: 'http://localhost',
             RedirectUriSignOut: 'https://dev.smoothflow.io/account'
             // RedirectUriSignOut: 'http://localhost'
             // ResponseType: 'code',
             // IdentityProvider : 'Google'
         };
         const cognitoAuthClient = new CognitoAuth(params);
-
-        // const oauth = {
-        //     domain : 'smoothflow-dev.auth.us-east-1.amazoncognito.com',
-        //     scope: ['email', 'profile', 'openid'],
-        //     redirectSignIn: 'http://localhost/',
-        //     redirectSignOut: 'http://localhost/',
-        //     responseType: 'code' // or token
-        // };
 
         // const oauth = {
         //     domain : 'smoothflow-dev.auth.us-east-1.amazoncognito.com',
@@ -77,6 +70,8 @@ class App extends Component {
         }
     }
     forwardFederatedUser(session) {
+        axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
+        axios.defaults.headers.common['companyInfo'] = '5:1';
         this.props.dispatch(User(session.idToken));
         this.props.history.push('/workspaces');
     }
