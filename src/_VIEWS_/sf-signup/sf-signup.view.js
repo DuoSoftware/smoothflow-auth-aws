@@ -5,12 +5,16 @@ import './sf-signup.scss'
 import Wrap from "../../_COMPONENTS_/_common_/wrap/sf-wrap.component";
 import { Link } from 'react-router-dom'
 import { Auth } from 'aws-amplify'
+import { connect } from 'react-redux'
 import {Preloader} from "../../_COMPONENTS_/_common_/sf-preloader/sf-preloader.component";
 import SignInWithFacebook from "../sf-signup-facebook.component";
 import SignInWithGoogle from "../sf-signup-google.component";
-import { toastr } from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr';
+import { SubscriptionService } from "../../_CORE_/services";
+import {Plan} from "../../_CORE_/actions";
 
 class SignUpView extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -33,6 +37,15 @@ class SignUpView extends Component {
             }
         }
     };
+    componentDidMount() {
+        const urlplan = this.props.location.search;
+        if (urlplan != "") {
+            const plan = urlplan.split('=')[1];
+            this.props.dispatch(Plan(plan));
+        } else {
+            this.props.dispatch(Plan("free_plan"));
+        }
+    }
     handleFormInputs = (e) => {
         const _id = e.target.id;
         const _val = e.target.value;
@@ -141,6 +154,7 @@ class SignUpView extends Component {
 
         Auth.signUp(_ampAuthObj)
             .then(data => {
+                debugger
                 this.setState(state => ({
                     ...state,
                     loading: false,
@@ -166,6 +180,7 @@ class SignUpView extends Component {
         Auth.confirmSignUp(this.state.user.username, this.state.confirmCode, {
             forceAliasCreation: true
         }).then(data => {
+            debugger
             if (data === 'SUCCESS') {
                 toastr.success('Success', 'You have successfully Signed Up with Smoothflow. Log In to continue.');
                 history.push('/');
@@ -279,4 +294,4 @@ class SignUpView extends Component {
 
 const history = createHashHistory();
 
-export default SignUpView;
+export default (connect())(SignUpView);

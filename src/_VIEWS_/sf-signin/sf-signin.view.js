@@ -7,13 +7,10 @@ import SignInWithGoogle from "../sf-signup-google.component";
 import SignInWithFacebook from "../sf-signup-facebook.component";
 import {Auth} from "aws-amplify/lib/index";
 import {Preloader} from "../../_COMPONENTS_/_common_/sf-preloader/sf-preloader.component";
-import {toastr} from "react-redux-toastr";
 import { createHashHistory } from 'history'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import URLS_ from '../../_CORE_/_urls_'
-import { Token, User } from '../../_CORE_/actions'
-import {WorkspaceService} from "../../_CORE_/services";
+import {InvitedUser, User} from '../../_CORE_/actions'
 
 class SignInView extends Component {
     constructor(props) {
@@ -62,7 +59,6 @@ class SignInView extends Component {
 
     signIn = (e) => {
         e.preventDefault();
-        const _self = this;
         this.setState(state => ({
             ...state,
             loading: true
@@ -73,13 +69,15 @@ class SignInView extends Component {
         };
 
         Auth.signIn(_ampAuthObj)
-            .then(data => {
+            .then(user => {
                 // debugger
-                this.setState(state => ({
-                    ...state,
-                    loading: false
-                }));
-                this.postAuthConfig();
+                if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
+                    this.props.dispatch(InvitedUser(user));
+                    this.props.history.push('/invitedsignup');
+                } else {
+                    this.props.dispatch(User(user.signInUserSession.idToken));
+                    this.props.history.push('/workspaces');
+                }
             })
             .catch(err => {
                 // debugger
@@ -91,19 +89,6 @@ class SignInView extends Component {
             });
 
     };
-
-    postAuthConfig () {
-        const _self = this;
-        this.setState(s => ({...s, loading: true}));
-        Auth.currentSession()
-            .then(session => {
-                axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
-                axios.defaults.headers.common['companyInfo'] = '5:1';
-                _self.props.dispatch(User(session.idToken));
-                _self.setState(s => ({...s, loading: false}));
-                _self.props.history.push('/workspaces');
-            });
-    }
 
     render() {
         return (
@@ -146,5 +131,4 @@ class SignInView extends Component {
 }
 
 const history = createHashHistory();
-
 export default (connect())(SignInView);

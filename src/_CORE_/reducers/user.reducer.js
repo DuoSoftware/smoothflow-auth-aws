@@ -1,5 +1,7 @@
 let user = {
-    user: null
+    user: null,
+    invited_user: null,
+    user_plan: null
 };
 
 const UserReducer = (state=user, action) => {
@@ -8,6 +10,18 @@ const UserReducer = (state=user, action) => {
             return {
                 ...state,
                 user: action.user
+            };
+
+        case 'INVITED_USER' :
+            return {
+                ...state,
+                invited_user: action.user
+            };
+
+        case 'USER_PLAN' :
+            return {
+                ...state,
+                user_plan: action.plan
             };
 
         default :

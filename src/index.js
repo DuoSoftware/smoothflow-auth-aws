@@ -11,6 +11,9 @@ import awsweb from './config/aws-amplify-config'
 import axios from 'axios'
 import URLS_ from './_CORE_/_urls_'
 
+const is_scoped = localStorage.getItem('scopes');
+// if (is_scoped) window.location.href='/account/app';
+
 const store = createStore(rootReducer);
 Amplify.configure(awsweb);
 
