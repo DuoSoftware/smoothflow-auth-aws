@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import SignUpView from './_VIEWS_/sf-signup/sf-signup.view'
 import SignInView from './_VIEWS_/sf-signin/sf-signin.view'
+import InvitedSignUpView from './_VIEWS_/sf-signup-invited/sf-signup-invited.view'
 import CustomerComplaints from './_VIEWS_/customer-complaints-template'
 import ForgotPasswordView from './_VIEWS_/sf-forgotpassword/sf-forgotpword.view'
 import WorkspaceView from './_VIEWS_/sf-new-workspace/sf-new-workspace.view'
@@ -15,6 +16,7 @@ import axios from "axios";
 import {User} from "./_CORE_/actions";
 import { createHashHistory } from 'history'
 import { connect } from 'react-redux'
+import URLS_ from './_CORE_/_urls_';
 
 class App extends Component {
     constructor(props) {
@@ -27,9 +29,8 @@ class App extends Component {
             UserPoolId: awsweb.Auth.userPoolId,
             AppWebDomain: awsweb.Auth.appWebDomain,
             TokenScopesArray: ['email', 'openid', 'profile', 'aws.cognito.signin.user.admin'],
-            RedirectUriSignIn: 'https://dev.smoothflow.io/account',
-            RedirectUriSignOut: 'https://dev.smoothflow.io/account'
-            // RedirectUriSignOut: 'http://localhost'
+            RedirectUriSignIn: URLS_.root_,
+            RedirectUriSignOut: URLS_.root_
             // ResponseType: 'code',
             // IdentityProvider : 'Google'
         };
@@ -73,7 +74,7 @@ class App extends Component {
         axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
         axios.defaults.headers.common['companyInfo'] = '5:1';
         this.props.dispatch(User(session.idToken));
-        window.location.href = "https://dev.smoothflow.io/account/#/workspaces";
+        window.location.href = `URLS_.root_${'/#/workspaces'}`;
     }
 
   render() {
@@ -96,6 +97,7 @@ class App extends Component {
                                 {/*<Route exact path="/customerComplaints" component={ CustomerComplaints }/>*/}
                                 <Route exact path="/forgotpassword" component={ ForgotPasswordView }/>
                                 <Route exact path="/workspaces" component={ WorkspaceView }/>
+                                <Route exact path="/invitedsignup" component={ InvitedSignUpView }/>
                             </Switch>
                         </CSSTransition>
                     </TransitionGroup>
