@@ -11,6 +11,7 @@ import { createHashHistory } from 'history'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import {InvitedUser, User} from '../../_CORE_/actions'
+import {UIHelperService} from "../../_CORE_/services";
 
 class SignInView extends Component {
     constructor(props) {
@@ -28,6 +29,9 @@ class SignInView extends Component {
             }
         }
     };
+    componentDidMount() {
+        UIHelperService.validateRedirections(this.props.dispatch);
+    }
     handleFormInputs = (e) => {
         const _id = e.target.id;
         const _val = e.target.value;

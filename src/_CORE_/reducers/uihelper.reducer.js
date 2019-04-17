@@ -1,5 +1,6 @@
 let uihelper = {
-    token: ''
+    token: '',
+    authredirect: ''
 };
 
 const UIHelperReducer = (state = uihelper, action) => {
@@ -10,8 +11,14 @@ const UIHelperReducer = (state = uihelper, action) => {
                 token: action.token
             };
 
+        case 'AUTH_REDIRECT' :
+            return {
+                ...state,
+                authredirect: action.url
+            };
+
         default :
-            return {}
+            return state
     }
 };
 

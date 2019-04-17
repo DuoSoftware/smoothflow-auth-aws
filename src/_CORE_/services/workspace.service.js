@@ -8,12 +8,11 @@ const WorkspaceService = {
     getMyself: (email) => {
         return axios.get(URLS_.user_ + URLS_.user.get_myself);
     },
-    readyWorkspace: (workspaceName, sub, plan) => {
+    readyWorkspace: (workspaceName, sub) => {
         return axios.post(URLS_.workspaces.ready_workspace,
             {
                 workspaceName: workspaceName,
-                billingAccount : sub,
-                planName : plan
+                billingAccount : sub
             });
     },
     getPermissions: () => {
