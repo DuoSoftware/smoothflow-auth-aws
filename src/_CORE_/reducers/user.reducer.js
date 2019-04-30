@@ -1,7 +1,7 @@
 let user = {
     user: null,
     invited_user: null,
-    user_plan: null
+    user_plan: 'free_plan'
 };
 
 const UserReducer = (state=user, action) => {

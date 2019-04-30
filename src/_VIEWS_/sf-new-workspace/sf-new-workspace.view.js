@@ -113,7 +113,7 @@ class WorkspaceView extends Component {
                         lastName : this.props.user.user.payload.family_name,
                         email : this.props.user.user.payload.email,
                         company : ws.company.toString(),
-                        tenant : this.props.user.user.payload.email,
+                        tenant : sub,
                         customerNote : userplan
                     };
                     axios.defaults.headers.common['companyInfo'] = ws.tenant + ':' + ws.company;
