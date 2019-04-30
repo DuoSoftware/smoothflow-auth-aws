@@ -74,7 +74,7 @@ class App extends Component {
         axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
         axios.defaults.headers.common['companyInfo'] = '5:1';
         this.props.dispatch(User(session.idToken));
-        window.location.href = `URLS_.root_${'/#/workspaces'}`;
+        window.location.href = URLS_.root_.replace('/account','/#/workspaces');
     }
 
   render() {
