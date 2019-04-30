@@ -59,7 +59,7 @@ class SignInWithFacebook extends Component {
     // }
 
     signIn() {
-        window.location = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://dev.smoothflow.io/account&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Facebook';
+        window.location = 'https://smoothflow-prod.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://prod.smoothflow.io/account&response_type=token&client_id=7h0k235kelpooui6etj31mcntr&identity_provider=Facebook';
         // window.location = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=http://localhost&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Facebook';
     }
 
@@ -124,7 +124,7 @@ class SignInWithFacebook extends Component {
     render() {
         return (
             <div>
-                <button className="sf-button sf-button-block sf-button-facebook" onClick={this.signIn}>
+                <button type="button" className="sf-button sf-button-block sf-button-facebook" onClick={this.signIn}>
                     <img src={require('./flogo-HexRBG-Wht-58.svg')} alt="Facebook"/> Sign in with Facebook</button>
             </div>
         );

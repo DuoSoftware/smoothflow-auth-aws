@@ -1,17 +1,19 @@
+// LIVE config
+
 const oauth = {
     // Domain name
-    domain : 'smoothflow-dev.auth.us-east-1.amazoncognito.com', 
+    domain : 'smoothflow-prod.auth.us-east-1.amazoncognito.com',
 
     // Authorized scopes
     scope : ['email', 'profile', 'openid'], 
 
     // Callback URL
     // redirectSignIn : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
-    redirectSignIn : 'https://localhost/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+    redirectSignIn : 'https://prod.smoothflow.io/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
 
     // Sign out URL
     // redirectSignOut : 'https://dev.smoothflow.io/account/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
-    redirectSignOut : 'https://localhost/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
+    redirectSignOut : 'https://prod.smoothflow.io/', // or 'exp://127.0.0.1:19000/--/', 'myapp://main/'
 
     // 'code' for Authorization code grant, 
     // 'token' for Implicit grant
@@ -27,7 +29,7 @@ const awsweb = {
     Auth: {
 
         // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
-        identityPoolId: 'us-east-1:9e414cfe-5e75-4cfe-acea-85899992cfd6',
+        identityPoolId: 'us-east-1:afec1095-ed36-4cc2-8f5b-ef6c37528c94',
 
         // REQUIRED - Amazon Cognito Region
         region: 'us-east-1',
@@ -37,15 +39,15 @@ const awsweb = {
         identityPoolRegion: 'us-east-1',
 
         // OPTIONAL - Amazon Cognito User Pool ID
-        userPoolId: 'us-east-1_f5naA3Cnx',
+        userPoolId: 'us-east-1_vhcdWMTaV',
 
         // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
-        userPoolWebClientId: '258mhpb6n41pp6s3n7v6q24tk1',
+        userPoolWebClientId: '7h0k235kelpooui6etj31mcntr',
 
         // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
         mandatorySignIn: false,
 
-        appWebDomain: 'smoothflow-dev.auth.us-east-1.amazoncognito.com',
+        appWebDomain: 'smoothflow-prod.auth.us-east-1.amazoncognito.com',
 
         // OPTIONAL - Configuration for cookie storage
         // Note: if the secure flag is set to true, then the cookie transmission requires a secure protocol

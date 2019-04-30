@@ -148,7 +148,8 @@ class SignUpView extends Component {
             attributes: {
                 "email": this.state.user.email,
                 "family_name": this.state.user.family_name,
-                "given_name": this.state.user.given_name
+                "given_name": this.state.user.given_name,
+                "name": this.state.user.given_name + ' ' + this.state.user.family_name
             }
         };
 

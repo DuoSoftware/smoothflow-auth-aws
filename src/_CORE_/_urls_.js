@@ -1,5 +1,5 @@
 const URLS_ = {
-    root_ : 'https://dev.smoothflow.io/account',
+    root_ : 'https://prod.smoothflow.io/account',
     base_ : 'https://ytr9muk1qj.execute-api.us-east-1.amazonaws.com',
     user_ : 'https://6vxjvtmgf1.execute-api.us-east-1.amazonaws.com',
     user: {
@@ -9,12 +9,12 @@ const URLS_ = {
     workspaces: {
         get_all: '/Prod/workspaces',
         create: '/Prod/workspace',
-        ready_workspace: 'https://useracountmanagerdev.plus.smoothflow.io/dbf/v1/setup/useraccount',
-        get_permissions : 'https://useracountmanagerdev.plus.smoothflow.io/dbf/v1/user/permissions'
+        ready_workspace: 'https://useracountmanager.plus.smoothflow.io/dbf/v1/setup/useraccount',
+        get_permissions : 'https://useracountmanager.plus.smoothflow.io/dbf/v1/user/permissions'
     },
     subscription: {
         // base_ : 'https://zze6f4st56.execute-api.us-east-1.amazonaws.com/Prod/',
-        base_ : 'https://devpayment.plus.smoothflow.io/',
+        base_ : 'https://payment.plus.smoothflow.io/',
         validate: 'validateAccount/',
         create_account: 'createAccount',
         create_account_free: 'createAccountWithFreeSubscription',
