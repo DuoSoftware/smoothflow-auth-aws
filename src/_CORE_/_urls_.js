@@ -18,7 +18,8 @@ const URLS_ = {
         validate: 'validateAccount/',
         create_account: 'createAccount',
         create_account_free: 'createAccountWithFreeSubscription',
-        subscribe_plan: 'createSubscriptionUsingToken'
+        subscribe_plan: 'createSubscriptionUsingToken',
+        get_account_by_accode: 'getSubscriptionDetailsByAccountCode/',
     }
 };
 

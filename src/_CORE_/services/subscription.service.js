@@ -19,6 +19,12 @@ const SubscriptionService = {
             data : info
         })
     },
+    getAccount: (code) => {
+        return axios({
+            method: 'GET',
+            url : URLs.subscription.base_ + URLs.subscription.get_account_by_accode + code
+        })
+    },
     subscribePlan: (info) => {
         return axios({
             method: 'POST',

@@ -146,9 +146,9 @@ class SignUpView extends Component {
             username: this.state.user.username,
             password: this.state.user.password,
             attributes: {
-                email: this.state.user.email,
-                family_name: this.state.user.family_name,
-                given_name: this.state.user.given_name
+                "email": this.state.user.email,
+                "family_name": this.state.user.family_name,
+                "given_name": this.state.user.given_name
             }
         };
 
@@ -293,5 +293,7 @@ class SignUpView extends Component {
 }
 
 const history = createHashHistory();
-
-export default (connect())(SignUpView);
+const setStateToProps = state =>({
+    user: state.user
+});
+export default (connect(setStateToProps))(SignUpView);
