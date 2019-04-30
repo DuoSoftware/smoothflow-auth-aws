@@ -22,6 +22,7 @@ class WorkspaceView extends Component {
         };
     }
     componentDidMount() {
+        debugger
         const user = this.props.user.user;
         const _self = this;
         this.setState(s => ({...s, loading: true}));
