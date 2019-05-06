@@ -20,8 +20,7 @@ Amplify.configure(awsweb);
 
 axios.get('https://dev.smoothflow.io/account/maintenance.json')
     .then(res => {
-        const _res = JSON.parse(res);
-        bootstrapApp(_res.under_maintenance);
+        bootstrapApp(res.data.under_maintenance);
 
         // HTTP config ----------------------------------------------------//
         axios.defaults.baseURL = URLS_.base_;
