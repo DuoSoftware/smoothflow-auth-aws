@@ -17,16 +17,28 @@ const is_scoped = localStorage.getItem('scopes');
 const store = createStore(rootReducer);
 Amplify.configure(awsweb);
 
-// HTTP config ----------------------------------------------------//
-axios.defaults.baseURL = URLS_.base_;
-// axios.defaults.headers.common['Authorization'] = 'Bearer ' + _token;
-// END - HTTP config ----------------------------------------------//
+axios.get('https://dev.smoothflow.io/account/maintenance.json')
+    .then(res => {
+        const _res = JSON.parse(res);
+        bootstrapApp(_res.under_maintenance);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>
-    , document.getElementById('root'));
+        // HTTP config ----------------------------------------------------//
+        axios.defaults.baseURL = URLS_.base_;
+        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + _token;
+        // END - HTTP config ----------------------------------------------//
+
+    })
+    .catch(eres => {
+        bootstrapApp(true);
+    });
+
+const bootstrapApp = (app) => {
+    ReactDOM.render(
+        <Provider store={store}>
+            { app ? <UnderMaintenance/> : <App /> }
+        </Provider>
+        , document.getElementById('root'));
+};
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
