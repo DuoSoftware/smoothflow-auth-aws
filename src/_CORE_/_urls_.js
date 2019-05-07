@@ -41,7 +41,7 @@ const URLS_PROD = {
     },
     subscription: {
         // base_ : 'https://zze6f4st56.execute-api.us-east-1.amazonaws.com/Prod/',
-        base_ : 'https://prod.payment.plus.smoothflow.io/',
+        base_ : 'https://payment.plus.smoothflow.io/',
         validate: 'validateAccount/',
         create_account: 'createAccount',
         create_account_free: 'createAccountWithFreeSubscription',
@@ -49,7 +49,7 @@ const URLS_PROD = {
         get_account_by_accode: 'getSubscriptionDetailsByAccountCode/',
     },
     maintenance: {
-        base_ : 'https://smoothflow.io/account/maintenance.json'
+        base_ : 'https://prod.smoothflow.io/account/maintenance.json'
     }
 };
 let URLS_ = null;
