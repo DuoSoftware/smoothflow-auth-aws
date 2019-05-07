@@ -9,8 +9,8 @@ const URLS_ = {
     workspaces: {
         get_all: '/Prod/workspaces',
         create: '/Prod/workspace',
-        ready_workspace: 'https://awsauth.plus.smoothflow.io/dbf/api/1.0.0.0/setup/useraccount',
-        get_permissions : 'https://awsauth.plus.smoothflow.io/dbf/api/1.0.0.0/user/permissions'
+        ready_workspace: 'https://awsauthdev.plus.smoothflow.io/dbf/api/1.0.0.0/setup/useraccount',
+        get_permissions : 'https://awsauthdev.plus.smoothflow.io/dbf/api/1.0.0.0/user/permissions'
     },
     subscription: {
         // base_ : 'https://zze6f4st56.execute-api.us-east-1.amazonaws.com/Prod/',

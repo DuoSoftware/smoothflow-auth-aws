@@ -20,8 +20,7 @@ Amplify.configure(awsweb);
 
 axios.get('https://dev.smoothflow.io/account/maintenance.json')
     .then(res => {
-        const _res = JSON.parse(res);
-        bootstrapApp(_res.under_maintenance);
+        bootstrapApp(res.data.under_maintenance);
 
         // HTTP config ----------------------------------------------------//
         axios.defaults.baseURL = URLS_.base_;
@@ -40,6 +39,7 @@ const bootstrapApp = (app) => {
         </Provider>
         , document.getElementById('root'));
 };
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
