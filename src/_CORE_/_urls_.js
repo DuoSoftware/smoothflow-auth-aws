@@ -49,7 +49,7 @@ const URLS_PROD = {
         get_account_by_accode: 'getSubscriptionDetailsByAccountCode/',
     },
     maintenance: {
-        base_ : 'https://prod.smoothflow.io/account/maintenance.json'
+        base_ : 'https://smoothflow.io/account/maintenance.json'
     }
 };
 let URLS_ = null;
