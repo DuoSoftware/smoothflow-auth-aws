@@ -20,6 +20,7 @@ Amplify.configure(awsweb);
 
 axios.get(URLS_.maintenance.base_)
     .then(res => {
+        debugger
         bootstrapApp(res.data.under_maintenance);
 
         // HTTP config ----------------------------------------------------//
@@ -29,6 +30,7 @@ axios.get(URLS_.maintenance.base_)
 
     })
     .catch(eres => {
+        debugger
         bootstrapApp(true);
     });
 

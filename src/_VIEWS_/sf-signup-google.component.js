@@ -26,7 +26,18 @@ class SignInWithGoogle extends Component {
     //     );
     // }
     signIn() {
-        window.location = 'https://smoothflow-prod.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://prod.smoothflow.io/account&response_type=token&client_id=7h0k235kelpooui6etj31mcntr&identity_provider=Google';
+        let url = null;
+        if (window.location.hostname == "localhost" ||
+            window.location.hostname == "dev.smoothflow.io" ||
+            window.location.hostname == "smoothflow-dev.s3-website-us-east-1.amazonaws.com" ||
+            window.location.hostname == "d35ie0dhlww2mo.cloudfront.net") {
+            url = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://dev.smoothflow.io/account&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Google';
+        } else if (window.location.hostname == "smoothflow.io" ||
+            window.location.hostname == "prod.smoothflow.io" ||
+            window.location.hostname == "d3ored5mvntnxi.cloudfront.net") {
+            url = 'https://smoothflow-prod.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://smoothflow.io/account&response_type=token&client_id=535313902488-549ejqd0j9rahppgvvusbnvil4b6chkh.apps.googleusercontent.com&identity_provider=Google';
+        }
+        window.location = url;
         // window.location = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=http://localhost&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Google';
     }
 
