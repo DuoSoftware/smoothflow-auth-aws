@@ -18,7 +18,7 @@ const is_scoped = localStorage.getItem('scopes');
 const store = createStore(rootReducer);
 Amplify.configure(awsweb);
 
-axios.get('https://dev.smoothflow.io/account/maintenance.json')
+axios.get(URLS_.maintenance.base_)
     .then(res => {
         bootstrapApp(res.data.under_maintenance);
 
