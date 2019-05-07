@@ -13,7 +13,7 @@ import URLS_ from './_CORE_/_urls_'
 import UnderMaintenance from './UnderMaintenance'
 
 const is_scoped = localStorage.getItem('scopes');
-// if (is_scoped) window.location.href='/account/app';
+// if (is_scoped) window.location.href='/account/app'; test
 
 const store = createStore(rootReducer);
 Amplify.configure(awsweb);
@@ -33,9 +33,11 @@ axios.get(URLS_.maintenance.base_)
     });
 
 const bootstrapApp = (app) => {
+    const force = window.location.href.includes('force=true');
+
     ReactDOM.render(
         <Provider store={store}>
-            { app ? <UnderMaintenance/> : <App /> }
+            { app && !force ? <UnderMaintenance/> : <App /> }
         </Provider>
         , document.getElementById('root'));
 };
