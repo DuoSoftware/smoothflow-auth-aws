@@ -68,7 +68,7 @@ class SignInWithFacebook extends Component {
         } else if (window.location.hostname == "smoothflow.io" ||
             window.location.hostname == "prod.smoothflow.io" ||
             window.location.hostname == "d3ored5mvntnxi.cloudfront.net") {
-            url = 'https://smoothflow-prod.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://smoothflow.io/account&response_type=token&client_id=877968375673377&identity_provider=Google';
+            url = 'https://smoothflow-prod.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=https://smoothflow.io/account&response_type=token&client_id=877968375673377&identity_provider=Facebook';
         }
         window.location = url;
         // window.location = 'https://smoothflow-dev.auth.us-east-1.amazoncognito.com/oauth2/authorize?redirect_uri=http://localhost&response_type=token&client_id=258mhpb6n41pp6s3n7v6q24tk1&identity_provider=Facebook';
