@@ -13,7 +13,7 @@ import URLS_ from './_CORE_/_urls_'
 import UnderMaintenance from './UnderMaintenance'
 
 const is_scoped = localStorage.getItem('scopes');
-// if (is_scoped) window.location.href='/account/app';
+// if (is_scoped) window.location.href='/account/app'; test
 
 const store = createStore(rootReducer);
 Amplify.configure(awsweb);
