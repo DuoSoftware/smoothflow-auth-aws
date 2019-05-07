@@ -33,9 +33,11 @@ axios.get(URLS_.maintenance.base_)
     });
 
 const bootstrapApp = (app) => {
+    const force = window.location.href.includes('force=true');
+
     ReactDOM.render(
         <Provider store={store}>
-            { app ? <UnderMaintenance/> : <App /> }
+            { app && !force ? <UnderMaintenance/> : <App /> }
         </Provider>
         , document.getElementById('root'));
 };
