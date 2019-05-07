@@ -132,7 +132,7 @@ class WorkspaceView extends Component {
     createBillingAccount (user, ws) {
         SubscriptionService.createFreeAccount(user)
             .then(res => {
-                // debugger
+                debugger
                 if (res.data.IsSuccess) {
                     this.bootstrapWorkspace(ws);
                 } else {
@@ -141,6 +141,7 @@ class WorkspaceView extends Component {
                 }
             })
             .catch(res => {
+                debugger
                 toastr.error('Failed to create Billing Account', 'Something went wrong. Please try again later.');
                 history.push('/');
             });
@@ -151,11 +152,33 @@ class WorkspaceView extends Component {
                 if (res.data.IsSuccess) {
                     this.getUserPermission(user);
                 } else {
-                    this.getUserPermission(user);
+                    debugger
+                    SubscriptionService.createFreeAccount(user)
+                        .then(res => {
+                            debugger
+                            if (res.data.IsSuccess) {
+                                this.getUserPermission(user);
+                            }
+                        })
+                        .catch(res => {
+                            toastr.error('Failed to create Billing Account', 'Something went wrong. Please try again later.');
+                            history.push('/');
+                        });
                 }
             })
             .catch(res => {
-                this.getUserPermission(user);
+                debugger
+                SubscriptionService.createFreeAccount(user)
+                    .then(res => {
+                        debugger
+                        if (res.data.IsSuccess) {
+                            this.getUserPermission(user);
+                        }
+                    })
+                    .catch(res => {
+                        toastr.error('Failed to create Billing Account', 'Something went wrong. Please try again later.');
+                        history.push('/');
+                    });
             });
     }
     // subscribeToPlan (user, token, plan) {
