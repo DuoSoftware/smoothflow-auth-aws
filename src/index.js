@@ -11,6 +11,7 @@ import awsweb from './config/aws-amplify-config'
 import axios from 'axios'
 import URLS_ from './_CORE_/_urls_'
 import UnderMaintenance from './UnderMaintenance'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 const is_scoped = localStorage.getItem('scopes');
 // if (is_scoped) window.location.href='/account/app'; test
@@ -30,8 +31,8 @@ axios.get(URLS_.maintenance.base_)
 
     })
     .catch(eres => {
-        debugger
-        bootstrapApp(true);
+        // debugger
+        bootstrapApp(false);
     });
 
 const bootstrapApp = (app) => {
@@ -39,7 +40,9 @@ const bootstrapApp = (app) => {
 
     ReactDOM.render(
         <Provider store={store}>
-            { app && !force ? <UnderMaintenance/> : <App /> }
+            <Router>
+                { app && !force ? <UnderMaintenance/> : <App /> }
+            </Router>
         </Provider>
         , document.getElementById('root'));
 };

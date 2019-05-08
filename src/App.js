@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import SignUpView from './_VIEWS_/sf-signup/sf-signup.view'
 import SignInView from './_VIEWS_/sf-signin/sf-signin.view'
@@ -8,7 +8,7 @@ import CustomerComplaints from './_VIEWS_/customer-complaints-template'
 import ForgotPasswordView from './_VIEWS_/sf-forgotpassword/sf-forgotpword.view'
 import WorkspaceView from './_VIEWS_/sf-new-workspace/sf-new-workspace.view'
 import './App.scss';
-import ReduxToastr from 'react-redux-toastr'
+import ReduxToastr, {toastr} from 'react-redux-toastr'
 import awsweb from "./config/aws-amplify-config";
 import {CognitoAuth} from "amazon-cognito-auth-js";
 import {Auth, Hub} from "aws-amplify/lib/index";
@@ -24,6 +24,15 @@ class App extends Component {
     };
     componentDidMount() {
         const _self = this;
+        const _is_req_invalid = window.location.href.includes('error=invalid_request');
+
+        if (_is_req_invalid) {
+            const qparams = this.getJsonFromUrl(window.location.href.split('/#')[1]);
+            const e = qparams.error_description.replace('PreSignUp+failed+with+error+', '');
+            const e_ = e.split('+').join(' ');
+            toastr.error('Invalid email', e_);
+            this.props.history.push('/signin');
+        }
         const params = {
             ClientId: awsweb.Auth.userPoolWebClientId,
             UserPoolId: awsweb.Auth.userPoolId,
@@ -70,6 +79,16 @@ class App extends Component {
             cognitoAuthClient.parseCognitoWebResponse(shorten);
         }
     }
+    getJsonFromUrl(url) {
+        if(!url) url = window.location.search;
+        const query = url.substr(1);
+        const result = {};
+        query.split("&").forEach(function(part) {
+            const item = part.split("=");
+            result[item[0]] = decodeURIComponent(item[1]);
+        });
+        return result;
+    }
     forwardFederatedUser(session) {
         axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;
         axios.defaults.headers.common['companyInfo'] = '5:1';
@@ -79,7 +98,6 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
             <div className="sf-auth">
                 <div className="sf-auth-header">
                     <img src="https://smoothflow.io/images/logo-smoothflow-beta-purple.svg" alt=""/>
@@ -111,10 +129,9 @@ class App extends Component {
                     transitionOut="fadeOut"
                     closeOnToastrClick/>
             </div>
-        </Router>
     );
   }
 }
 
 const history = createHashHistory();
-export default (connect())(App);
+export default withRouter((connect())(App));
