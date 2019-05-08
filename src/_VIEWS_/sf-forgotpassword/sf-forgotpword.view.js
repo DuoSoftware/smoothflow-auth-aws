@@ -76,6 +76,7 @@ class ForgotPasswordView extends Component {
         }
     };
     sendRequest = (e) => {
+        e.preventDefault();
         this.setState(state => ({
             ...state,
             loading: true
@@ -108,7 +109,8 @@ class ForgotPasswordView extends Component {
             }
         }));
     }
-    updateNewPassword () {
+    updateNewPassword (e) {
+        e.preventDefault();
         const _self = this;
         this.setState(state => ({
             ...state,
