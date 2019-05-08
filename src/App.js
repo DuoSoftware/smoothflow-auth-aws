@@ -17,6 +17,7 @@ import {User} from "./_CORE_/actions";
 import { createHashHistory } from 'history'
 import { connect } from 'react-redux'
 import URLS_ from './_CORE_/_urls_';
+import {UIHelperService} from "./_CORE_/services";
 
 class App extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class App extends Component {
         const _is_req_invalid = window.location.href.includes('error=invalid_request');
 
         if (_is_req_invalid) {
-            const qparams = this.getJsonFromUrl(window.location.href.split('/#')[1]);
+            const qparams = UIHelperService.getJsonFromUrl(window.location.href.split('/#')[1]);
             const e = qparams.error_description.replace('PreSignUp+failed+with+error+', '');
             const e_ = e.split('+').join(' ');
             toastr.error('Invalid email', e_);
@@ -78,16 +79,6 @@ class App extends Component {
             const shorten = curUrl.replace(params.RedirectUriSignIn+'/#/', params.RedirectUriSignIn+'/#');
             cognitoAuthClient.parseCognitoWebResponse(shorten);
         }
-    }
-    getJsonFromUrl(url) {
-        if(!url) url = window.location.search;
-        const query = url.substr(1);
-        const result = {};
-        query.split("&").forEach(function(part) {
-            const item = part.split("=");
-            result[item[0]] = decodeURIComponent(item[1]);
-        });
-        return result;
     }
     forwardFederatedUser(session) {
         axios.defaults.headers.common['Authorization'] = 'bearer ' + session.idToken.jwtToken;

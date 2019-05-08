@@ -13,7 +13,17 @@ const UIHelperService = {
             const r = u.split(f)[1];
             dispatcher(AuthRedirect(r));
         }
+    },
+    getJsonFromUrl(url) {
+        if(!url) url = window.location.search;
+        const query = url.substr(1);
+        const result = {};
+        query.split("&").forEach(function(part) {
+            const item = part.split("=");
+            result[item[0]] = decodeURIComponent(item[1]);
+        });
+        return result;
     }
-}
+};
 
 export { UIHelperService };
