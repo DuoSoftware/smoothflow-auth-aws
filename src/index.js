@@ -31,7 +31,7 @@ axios.get(URLS_.maintenance.base_)
     })
     .catch(eres => {
         debugger
-        bootstrapApp(true);
+        bootstrapApp(false);
     });
 
 const bootstrapApp = (app) => {
