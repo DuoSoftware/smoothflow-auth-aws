@@ -78,7 +78,7 @@ class WorkspaceView extends Component {
             //     }
             // }));
             axios.defaults.headers.common['companyInfo'] = user.tenant + ':' + user.company;
-            this.getBillingAccount(user.email)
+            this.getBillingAccount(this.props.user.user.payload.sub)
         } else {
             this.setState(s=>({
                 ...s,
@@ -153,32 +153,11 @@ class WorkspaceView extends Component {
                     this.getUserPermission(user);
                 } else {
                     debugger
-                    SubscriptionService.createFreeAccount(user)
-                        .then(res => {
-                            debugger
-                            if (res.data.IsSuccess) {
-                                this.getUserPermission(user);
-                            }
-                        })
-                        .catch(res => {
-                            toastr.error('Failed to create Billing Account', 'Something went wrong. Please try again later.');
-                            history.push('/');
-                        });
+
                 }
             })
             .catch(res => {
                 debugger
-                SubscriptionService.createFreeAccount(user)
-                    .then(res => {
-                        debugger
-                        if (res.data.IsSuccess) {
-                            this.getUserPermission(user);
-                        }
-                    })
-                    .catch(res => {
-                        toastr.error('Failed to create Billing Account', 'Something went wrong. Please try again later.');
-                        history.push('/');
-                    });
             });
     }
     // subscribeToPlan (user, token, plan) {
