@@ -92,9 +92,10 @@ class ForgotPasswordView extends Component {
                 this.newPasswordsInit();
             })
             .catch(err => {
+                err.message.replace('UserMigration failed with error ', '');
                 this.setState(state => ({
                     ...state,
-                    error: err.replace('UserMigration failed with error ', ''),
+                    error: err,
                     loading: false
                 }));
             });

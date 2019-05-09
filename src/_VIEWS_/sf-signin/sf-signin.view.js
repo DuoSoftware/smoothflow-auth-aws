@@ -85,9 +85,10 @@ class SignInView extends Component {
             })
             .catch(err => {
                 // debugger
+                err.message.replace('UserMigration failed with error ', '');
                 this.setState(state => ({
                     ...state,
-                    error: err.replace('UserMigration failed with error ', ''),
+                    error: err,
                     loading: false
                 }));
             });
