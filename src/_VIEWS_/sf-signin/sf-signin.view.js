@@ -87,7 +87,7 @@ class SignInView extends Component {
                 // debugger
                 this.setState(state => ({
                     ...state,
-                    error: err,
+                    error: err.replace('UserMigration failed with error ', ''),
                     loading: false
                 }));
             });
