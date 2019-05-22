@@ -152,7 +152,7 @@ class WorkspaceView extends Component {
                 if (res.data.IsSuccess) {
                     this.getUserPermission(user);
                 } else {
-                    debugger
+                    this.getUserPermission(user);
 
                 }
             })

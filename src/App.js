@@ -9,7 +9,7 @@ import ForgotPasswordView from './_VIEWS_/sf-forgotpassword/sf-forgotpword.view'
 import WorkspaceView from './_VIEWS_/sf-new-workspace/sf-new-workspace.view'
 import './App.scss';
 import ReduxToastr, {toastr} from 'react-redux-toastr'
-import awsweb from "./config/aws-amplify-config";
+import awsweb from "./config/aws-amplify-config-prod";
 import {CognitoAuth} from "amazon-cognito-auth-js";
 import {Auth, Hub} from "aws-amplify/lib/index";
 import axios from "axios";

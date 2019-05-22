@@ -78,9 +78,11 @@ class SignInWithGoogle extends Component {
     initGapi() {
         // init the Google SDK client
         const g = window.gapi;
+        const self = this;
         g.load('auth2', function() {
+            const self_ = self;
             g.auth2.init({
-                client_id: this.g_client_id,
+                client_id: self_.g_client_id,
                 // authorized scopes
                 scope: 'profile email openid'
             });

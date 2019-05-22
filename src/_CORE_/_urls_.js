@@ -1,20 +1,21 @@
 const URLS_DEV = {
     root_ : 'https://dev.smoothflow.io/account',
     base_ : 'https://ytr9muk1qj.execute-api.us-east-1.amazonaws.com',
-    user_ : 'https://6vxjvtmgf1.execute-api.us-east-1.amazonaws.com',
+    user_ : 'https://ml9oskczql.execute-api.us-east-1.amazonaws.com',
     user: {
-        get_user_by_email: '/Prod/DBF/API/1.0.0.0/UserByEmail/',
-        get_myself : '/Prod/DBF/API/1.0.0.0/me'
+        get_user_by_email: '/Dev/DBF/API/1.0.0.0/UserByEmail/',
+        get_myself : '/Dev/DBF/API/1.0.0.0/me'
     },
     workspaces: {
-        get_all: '/Prod/workspaces',
-        create: '/Prod/workspace',
+        base_ : 'https://hf93pu6xod.execute-api.us-east-1.amazonaws.com/Dev/',
+        get_all: 'workspaces',
+        create: 'Dev/workspace',
         ready_workspace: 'https://awsauthdev.plus.smoothflow.io/dbf/api/1.0.0.0/setup/useraccount',
         get_permissions : 'https://awsauthdev.plus.smoothflow.io/dbf/api/1.0.0.0/user/permissions'
     },
     subscription: {
         // base_ : 'https://zze6f4st56.execute-api.us-east-1.amazonaws.com/Prod/',
-        base_ : 'https://payment.plus.smoothflow.io/',
+        base_ : 'https://devpayment.plus.smoothflow.io/',
         validate: 'validateAccount/',
         create_account: 'createAccount',
         create_account_free: 'createAccountWithFreeSubscription',
@@ -28,14 +29,15 @@ const URLS_DEV = {
 const URLS_PROD = {
     root_ : 'https://smoothflow.io/account',
     base_ : 'https://ytr9muk1qj.execute-api.us-east-1.amazonaws.com',
-    user_ : 'https://6vxjvtmgf1.execute-api.us-east-1.amazonaws.com',
+    user_ : 'https://ml9oskczql.execute-api.us-east-1.amazonaws.com',
     user: {
         get_user_by_email: '/Prod/DBF/API/1.0.0.0/UserByEmail/',
         get_myself : '/Prod/DBF/API/1.0.0.0/me'
     },
     workspaces: {
-        get_all: '/Prod/workspaces',
-        create: '/Prod/workspace',
+        base_ : 'https://hf93pu6xod.execute-api.us-east-1.amazonaws.com/Prod/',
+        get_all: 'workspaces',
+        create: 'workspace',
         ready_workspace: 'https://awsauth.plus.smoothflow.io/dbf/api/1.0.0.0/setup/useraccount',
         get_permissions : 'https://awsauth.plus.smoothflow.io/dbf/api/1.0.0.0/user/permissions'
     },

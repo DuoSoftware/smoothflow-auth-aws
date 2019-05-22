@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Auth } from 'aws-amplify';
 import { CognitoAuth } from 'amazon-cognito-auth-js'
-import awsweb from '../config/aws-amplify-config'
+import awsweb from '../config/aws-amplify-config-prod'
 
 // To federated sign in from Facebook
 class SignInWithFacebook extends Component {
