@@ -60,10 +60,12 @@ if (window.location.hostname == "localhost" ||
     window.location.hostname == "dev.smoothflow.io" ||
     window.location.hostname == "smoothflow-dev.s3-website-us-east-1.amazonaws.com" ||
     window.location.hostname == "d35ie0dhlww2mo.cloudfront.net") {
+    debugger
     URLS_ = URLS_DEV;
 } else if (window.location.hostname == "smoothflow.io" ||
     window.location.hostname == "prod.smoothflow.io" ||
     window.location.hostname == "d3ored5mvntnxi.cloudfront.net") {
+    debugger
     URLS_ = URLS_PROD;
 }
 
