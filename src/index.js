@@ -15,7 +15,7 @@ import UnderMaintenance from './UnderMaintenance'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 const is_scoped = localStorage.getItem('scopes');
-// if (is_scoped) window.location.href='/account/app'; test
+if (is_scoped) window.location.href='/account/app';
 let awsc = null;
 
 const store = createStore(rootReducer);
