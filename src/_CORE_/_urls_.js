@@ -1,7 +1,7 @@
 const URLS_DEV = {
     root_ : 'https://dev.smoothflow.io/account',
     base_ : 'https://ytr9muk1qj.execute-api.us-east-1.amazonaws.com',
-    user_ : 'https://6vxjvtmgf1.execute-api.us-east-1.amazonaws.com',
+    user_ : 'https://ml9oskczql.execute-api.us-east-1.amazonaws.com',
     user: {
         get_user_by_email: '/Dev/DBF/API/1.0.0.0/UserByEmail/',
         get_myself : '/Dev/DBF/API/1.0.0.0/me'
@@ -29,7 +29,7 @@ const URLS_DEV = {
 const URLS_PROD = {
     root_ : 'https://smoothflow.io/account',
     base_ : 'https://ytr9muk1qj.execute-api.us-east-1.amazonaws.com',
-    user_ : 'https://6vxjvtmgf1.execute-api.us-east-1.amazonaws.com',
+    user_ : 'https://ml9oskczql.execute-api.us-east-1.amazonaws.com',
     user: {
         get_user_by_email: '/Prod/DBF/API/1.0.0.0/UserByEmail/',
         get_myself : '/Prod/DBF/API/1.0.0.0/me'
