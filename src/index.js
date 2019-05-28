@@ -36,10 +36,10 @@ axios.get(URLS_.maintenance.base_)
         debugger
         bootstrapApp(res.data.under_maintenance);
 
-        // HTTP config ----------------------------------------------------//
+        // HTTP config -----------------------------------------------------//
         axios.defaults.baseURL = URLS_.base_;
         // axios.defaults.headers.common['Authorization'] = 'Bearer ' + _token;
-        // END - HTTP config ----------------------------------------------//
+        // END - HTTP config -----------------------------------------------//
 
     })
     .catch(eres => {
