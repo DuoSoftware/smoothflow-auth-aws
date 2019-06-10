@@ -159,7 +159,12 @@ class SignUpView extends Component {
                 this.setState(state => ({
                     ...state,
                     loading: false,
-                    initConfirm: true
+                    initConfirm: true,
+                    error: {
+                        code: "",
+                        message: "",
+                        name: ""
+                    }
                 }))
             })
             .catch(err => {
