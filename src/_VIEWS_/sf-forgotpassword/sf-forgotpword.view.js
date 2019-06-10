@@ -107,6 +107,11 @@ class ForgotPasswordView extends Component {
             forgotPassword: {
                 ...state.forgotPassword,
                 code: ''
+            },
+            error: {
+                code: "",
+                message: "",
+                name: ""
             }
         }));
     }
