@@ -85,12 +85,17 @@ class SignInView extends Component {
             })
             .catch(err => {
                 // debugger
-                err.message = err.message.replace('UserMigration failed with error ', '');
-                this.setState(state => ({
-                    ...state,
-                    error: err,
-                    loading: false
-                }));
+                if (err.code === 'UserNotConfirmedException') {
+                    this.props.history.push({ pathname: '/signup', forceConfirm: true });
+                } else {
+                    err.message = err.message.replace('UserMigration failed with error ', '');
+                    this.setState(state => ({
+                        ...state,
+                        error: err,
+                        loading: false
+                    }));
+                }
+
             });
 
     };
