@@ -86,7 +86,7 @@ class SignInView extends Component {
             .catch(err => {
                 // debugger
                 if (err.code === 'UserNotConfirmedException') {
-                    this.props.history.push({ pathname: '/signup', forceConfirm: true });
+                    this.props.history.push({ pathname: '/signup', forceConfirm: true, username: this.state.user.email });
                 } else {
                     err.message = err.message.replace('UserMigration failed with error ', '');
                     this.setState(state => ({

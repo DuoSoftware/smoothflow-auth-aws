@@ -38,10 +38,13 @@ class SignUpView extends Component {
         }
     };
     componentDidMount() {
-        if (this.props.location.forceConfirm) {
+        if (this.props.location.forceConfirm && this.props.location.username) {
             this.setState(state => ({
                 ...state,
-                initConfirm: true
+                initConfirm: true,
+                user: {
+                    username: this.props.location.username
+                }
             }));
         }
         const urlplan = this.props.location.search;
