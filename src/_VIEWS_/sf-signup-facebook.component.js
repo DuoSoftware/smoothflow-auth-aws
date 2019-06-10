@@ -136,7 +136,7 @@ class SignInWithFacebook extends Component {
         return (
             <div>
                 <button type="button" className="sf-button sf-button-block sf-button-facebook" onClick={this.signIn}>
-                    <img src={require('./flogo-HexRBG-Wht-58.svg')} alt="Facebook"/> Sign in with Facebook</button>
+                    <img src={require('./flogo-HexRBG-Wht-58.svg')} alt="Facebook"/>Continue with Facebook</button>
             </div>
         );
     }

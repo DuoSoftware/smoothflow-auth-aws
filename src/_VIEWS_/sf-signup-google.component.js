@@ -93,7 +93,7 @@ class SignInWithGoogle extends Component {
         return (
             <div>
                 <button className="sf-button sf-button-block sf-button-google" onClick={this.signIn}>
-                    <img src={require('./btn_google_light_normal_ios.svg')} alt="Google"/> Sign in with Google
+                    <img src={require('./btn_google_light_normal_ios.svg')} alt="Google"/>Continue with Google
                 </button>
             </div>
         );
