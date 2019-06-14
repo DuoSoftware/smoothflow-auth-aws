@@ -53,15 +53,39 @@ class ForgotPasswordView extends Component {
                 break;
 
             case 'password' :
+                let _error = {
+                    message: null,
+                    strong: false
+                };
+                function _validate () {
+                    const regx = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/);
+                    if (regx.test(_val)) {
+                        return {
+                            message: '',
+                            strong: true
+                        };
+                    }
+                    else {
+                        return {
+                            message: 'Password should contain a minimum of 8 characters including an Upper Case character, a Numeric character and a Special character',
+                            strong: false
+                        };
+                    }
+                };
+                if (_val === '') _error.message = '';
+                else _error = _validate();
+
                 this.setState(state => ({
                     ...state,
                     forgotPassword: {
                         ...state.forgotPassword,
                         password: _val
-                    }
+                    },
+                    error: {
+                        message: _error.message
+                    },
                 }));
                 break;
-
             case 'togglePassword' :
                 const _type = this.state.passwordType === 'password' ? 'text' : 'password';
                 this.setState(state => ({
@@ -137,7 +161,10 @@ class ForgotPasswordView extends Component {
                 toastr.success("Success", "Password changed successfully.");
             })
             .catch(err => {
-                this.setState(state => ({
+                if (err.code == "ExpiredCodeException")
+                    err.message = "Expired or invalid code provided, please request a code again.";
+                
+                    this.setState(state => ({
                     ...state,
                     error: err,
                     loading: false
