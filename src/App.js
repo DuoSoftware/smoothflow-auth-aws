@@ -64,6 +64,8 @@ class App extends Component {
             onSuccess: (result) => {
                 Auth.currentSession().then((session) => {
                     _self.forwardFederatedUser(session);
+                }, error => {
+                   debugger
                 })
                 .catch((err) => {
                     debugger
