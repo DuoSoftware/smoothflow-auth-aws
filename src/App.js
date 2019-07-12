@@ -62,13 +62,10 @@ class App extends Component {
         cognitoAuthClient.userhandler = {
             // user signed in
             onSuccess: (result) => {
-                Auth.currentSession().then((session) => {
+                Auth.currentSession().then(async (session) => {
                     _self.forwardFederatedUser(session);
                 }, error => {
                    debugger
-                })
-                .catch((err) => {
-                    debugger
                 });
             },
             onFailure: (err) => {
