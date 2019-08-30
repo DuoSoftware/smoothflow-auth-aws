@@ -68,7 +68,7 @@ class SignInView extends Component {
             loading: true
         }));
         const _ampAuthObj = {
-            username: this.state.user.email,
+            username: this.state.user.email.trim(),
             password: this.state.user.password,
         };
 

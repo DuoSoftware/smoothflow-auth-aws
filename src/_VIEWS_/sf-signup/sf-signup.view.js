@@ -152,10 +152,10 @@ class SignUpView extends Component {
             loading: true
         }));
         const _ampAuthObj = {
-            username: this.state.user.username,
+            username: this.state.user.username.trim(),
             password: this.state.user.password,
             attributes: {
-                "email": this.state.user.email,
+                "email": this.state.user.email.trim(),
                 "family_name": this.state.user.family_name,
                 "given_name": this.state.user.given_name,
                 "name": this.state.user.given_name + ' ' + this.state.user.family_name
